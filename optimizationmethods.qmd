@@ -1,0 +1,233 @@
+---
+# jupyter: python3
+title: "Your Document Title"
+# crossref:
+#   chapters: true
+#   # code-links: true
+#   fig-title: "Figure"
+#   tbl-title: "Table"
+#   lst-title: "Listing"
+---
+
+<a href="https://colab.research.google.com/github/mgrabul/optimization_methods/blob/main/optimizationmethods.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+\tableofcontents
+
+## QUATRO
+
+https://quarto.org/docs/authoring/cross-references.html
+
+Label Prefix Printed Name LaTeX Environment #thm- Theorem theorem #lem- Lemma lemma #cor- Corollary corollary #prp- Proposition proposition #cnj- Conjecture conjecture #def- Definition definition #exm- Example example #exr- Exercise exercise #sol- Solution solution #rem- Remark remark #alg- Algorithm algorithm
+
+#eq- Equation
+
+\newpage
+
+# Introduction
+
+The seminar work contains three chapters. It begins with a basic introduction to Python, followed by linear algebra concepts and their implementation in Python. In the final chapter, foundational optimization algorithms are introduced, where all previously explained concepts and developed algorithms are put to use. This structured progression allows readers to build essential Python skills for mathematical applications, establishing a solid foundation for understanding basic optimization algorithms. It also serves as a valuable introduction to using Python for various mathematical tasks and projects.
+
+Specific attention is maintained on a structured approach where the code is modular and reusable. The recursive nature of optimization methods is illustrated through this modular design, and Python's functional programming capabilities are leveraged by passing functions as arguments to define iteration logic, convergence criteria, and method-specific computations. This approach allows the mathematical relationships within each algorithm to be clearly represented, emphasizing both reusability and the structural similarities and differences across methods. The methods are developed gradually, with more complex techniques relying on functions initially crafted for simpler methods, reinforcing understanding through progressive complexity.
+
+The entire code is designed to be executed in Jupyter Notebook or Google Colab, offering readers an interactive environment to experiment with each optimization technique. This hands-on approach not only deepens understanding but also makes Python a practical tool for mathematical and optimization-based applications.
+
+This seminar work was created for the subject Optimization Methods as part of the master's program at the University of Information Science and Technology St. Paul the Apostle. The final chapter uses optimization algorithm examples and explanations inspired by An Introduction to Optimization, Second Edition by Edwin K. P. Chong and Stanislaw H. Źak (Wiley-Interscience, 2001).
+
+\newpage
+
+# Python Introduction
+
+Python is a general-purpose high-level programming language. It was invented in the late '80s, and its current major version is 3. Important features and characteristics of Python include:
+
+-   Object-oriented
+-   Dynamically typed
+-   Open source
+-   High-level
+-   Interpreted
+-   First-class functions
+-   Higher-order functions
+
+Python code is interpreted, meaning it is transformed into byte code one line at a time during execution. There is no separate compile phase, so no compile time is needed. Popular uses of Python include scripting and automation, microservices, statistics, and machine learning.
+
+Due to its open-source nature and well-developed libraries for computation and visualization, such as NumPy and Matplotlib, Python has become quite popular in math-related fields, especially in universities and academia. It has increasingly replaced previously well-established software like "Wolfram Mathematica" and "MATLAB."
+
+\newpage
+
+## Basic Python commands
+
+Traditionally, every tutorial for a programming language starts with an introduction on how to display output to the screen or use the print command. Printing is done with the function `print`.
+
+<!-- **Example**: Print "Hello, World!" -->
+
+as shown in @ex:hello
+
+```{python}
+#| label: ex:hello
+#| caption: Example – Printing "Hello, World!"
+#| colab: {base_uri: https://localhost:8080/}
+
+
+# Print a string
+print("Hello World")
+```
+
+While printing, strings and numbers can be concatenated using the , sign. in Section @sec:Declaring_variables_in_Python.
+
+**Example**. Concatenate the words "Hello" and "World" and print them.
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+# Concatenating and printing strings
+print("Concatenating Hello and World with +: "+"Hello"+" World")
+print("Concatenating Hello and World with +: ","Hello"," World")
+```
+
+## Declaring variables in Python {#sec:Declaring_variables_in_Python}
+
+In this section Python is a dynamic language, and memory is assigned at execution time. This means that variables don't need to be associated with a type at the time of declaration; they receive their type at the time of initialization. As a result, only initialization is required. Additionally, because Python is dynamic, different types of data can be assigned to the same variable, although this is generally not considered good practice.
+
+In Python, the symbol `:` can be used to provide hints on the variable type. These hints are used by development environments to provide information to the developer. Using type hints improves code quality and makes the coding process easier.
+
+**Example**. Assign 1 and 2 to integer variables `x`, `y` and print their values
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+x = 1
+# int is a hint and not required in the following expression
+y:int = 2
+
+print("x is:")
+print(x)
+print("y is:")
+print(y)
+```
+
+Almost anything can be printed using concatenation, but Python offers a more elegant way of formatting. Simple formatting is done by using the letter `f` before the string. Instead of concatenating, variables can be inserted directly into the string using `{}`.
+
+**Example**: Using string formatting to print `x=1, y=2` where `x` and `y` are integer variables.
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+x = 1
+# int is a hint and not required in the following expression
+y:int = 2
+
+print(f"x={x}, y={y}")
+```
+
+Similarly, a string can be formatted into two lines using `"\n"` as a line break.
+
+**Example**. Print one string in two lines using the `"\n"` line brake.
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+print(f"To print in a new line use \\n \\n The following text will be printed in a new line:\\n'text in a new line'")
+```
+
+## Basic data types in Python
+
+-   Text Type: str
+-   Numeric Types: int, float, complex
+-   Sequence Types: list, tuple, range
+-   Mapping Type: dict
+-   Set Types: set, frozenset
+-   Boolean Type: bool
+-   Binary Types: bytes, bytearray, memoryview
+-   None Type: NoneType
+
+**Example**. Declare the most common data types in Python.
+
+```{python}
+# Strings, datatypes that hold text.
+x1: str = "Hello World"
+
+# Integers, positive and negative whole numbers.
+x2: int = 20
+
+# Floats, datatypes that are generally used to represent real numbers.
+# Mathematically speaking, they are real numbers with a precision of usually 16-17 digits.
+x3: float = 20.5
+
+# Complex numbers, used to represent numbers with a real and an imaginary part.
+# They have precision similar to floats.
+x4: complex = 1j
+
+# List or array, collections of indexed elements. The elements don't have to be unique.
+x5: list = ["apple", "banana", "cherry"]
+# The indexing starts from 0. e.g., access the second element of a list
+x5_2 = x5[1]
+
+# Tuple, collections of indexed elements similar to lists but are immutable once
+# created. This type of variable is not used in this book. It is used to
+# represent static data that is stored in memory.
+x6: tuple = ("apple", "banana", "cherry")
+
+# Range, immutable sequences of numbers, usually used for looping or iterating
+# in arrays or other data structures.
+x7: range = range(6)
+
+# Dictionary, key-value pair data structure where keys are unique. Usually used
+# when building JSON objects or storing data. This variable is not used in this
+# book.
+x8: dict = {"name": "John", "age": 36}
+
+# Access an element in the dictionary
+x8_name = x8["name"]
+
+# Set, unordered collections of unique elements. Not used in this book. Usually
+# used to store or keep track of unique values.
+x9: set = {"apple", "banana", "cherry"}
+
+# Frozenset, unordered collections of unique elements. Unlike sets, they are
+# immutable. Not used in this book. Could be used to store certain static
+# parameters inside a client application or server from initialization until
+# the end of the application.
+x10: frozenset = frozenset({"apple", "banana", "cherry"})
+
+# Boolean, represents True or False values. Mostly used for conditional statements.
+x11: bool = True
+
+# Bytes, sequences of bytes. Once a bytes object is created, its elements cannot
+# be changed. Used when dealing with communication with embedded devices like
+# electronic cards. This variable is not of interest for the purposes/range of
+# this book.
+x12: bytes = b"Hello"
+
+# Bytearray, similar to bytes but mutable, meaning elements can be changed.
+# This variable is not of interest for the purposes/range of this book.
+x13: bytearray = bytearray(5)
+
+# None, used to represent the absence of a value.
+x14: None = None
+```
+
+## Introduction
+
+## Another topic
+
+Some content here...
+
+## Declaring variables in Python {#sec-variables}
+
+We will learn about variables in section @sec-variables.
+
+This section covers variable declaration. Python is a dynamic language.
+
+```{python}
+#| label: fig:ex-hello
+#| caption: Example - Hello World
+
+print("Hello World")
+```
+
+As shown in @ex-hello, we can print text.
+
+## Conclusion
+
+As discussed in @sec:variables, Python variables are dynamic.
+
+$$
+E = mc^2
+$$ {#eq-emc}
+
+Reference: Equation sdssadsdfds sdfasfasdf asdfdf grgwert wertgwert wert dfgwsdf gd @eq-emc. Something here @eq-emc.

@@ -54,6 +54,48 @@ https://code.visualstudio.com/docs/python/python-quick-start
 * https://marketplace.visualstudio.com/items?itemName=ban.spellright
 * https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 
+## Quarto setup
+
+### Install Quarto
+* Download and install from https://quarto.org/docs/get-started/
+* Or via Homebrew: `brew install quarto`
+
+### VS Code extension
+* https://marketplace.visualstudio.com/items?itemName=quarto.quarto
+
+### Virtual environment setup
+```bash
+# Create and activate the virtual environment
+python -m venv quarto_env
+source quarto_env/bin/activate
+
+# Install required packages
+pip install jupyter jupyterlab
+pip freeze > requirements.txt
+```
+
+### Restore environment (after cloning)
+```bash
+python -m venv quarto_env
+source quarto_env/bin/activate
+pip install -r requirements.txt
+```
+
+### Convert .ipynb to .qmd
+```bash
+quarto convert optimizationmethods.ipynb
+```
+
+### Render to HTML
+```bash
+quarto render optimizationmethods.qmd --to html
+```
+
+### Preview with live reload
+```bash
+quarto preview optimizationmethods.qmd
+```
+
 ## Convert to pdf and html
 ```bash
 jupyter nbconvert --to pdf optimizationmethods.ipynb
