@@ -4,3 +4,8 @@ PrvaStrana.pdf
 custom_template.tplx
 custom_template.tpl
 tempDirectory/*
+
+# Quarto
+quarto_env/
+optimizationmethods_files/
+.quarto/
