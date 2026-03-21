@@ -9,3 +9,7 @@ tempDirectory/*
 quarto_env/
 optimizationmethods_files/
 .quarto/
+
+# Amazon publish - ignore everything except readme.md
+amazon_publish_6_9/*
+!amazon_publish_6_9/readme.md

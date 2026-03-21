@@ -80,3 +80,31 @@ jupyter nbconvert --to latex optimizationmethods.ipynb
 pandoc optimizationmethods.tex -o optimizationmethods.docx --toc --toc-depth=3
 
 ```
+## Export for amazon
+The issue is that the .ipynb does not support subtitle. To do this add this in the first cell :
+```
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+
+    {\Huge\bfseries Python for Fundamental Optimization Methods\par}
+    \vspace{1cm}
+
+    {\Large An Introduction to Algorithms, Linear Algebra, and Numerical Optimization\par}
+    \vspace{2cm}
+
+    {\Large Marko Grabuloski\par}
+    \vfill
+\end{titlepage}
+```
+```bash 
+# convert to latex
+jupyter nbconvert --to latex optimizationmethods.ipynb
+```
+in the latex optimizationmethods.tex comment out  `\maketitle`
+
+```bash
+# run
+xelatex optimizationmethods.tex
+xelatex optimizationmethods.tex
+```
