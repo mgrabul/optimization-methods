@@ -81,6 +81,9 @@ pandoc optimizationmethods.tex -o optimizationmethods.docx --toc --toc-depth=3
 
 ```
 ## Export for amazon
+
+Find instructions in the amazon_publish_6_9 folder. 
+
 The issue is that the .ipynb does not support subtitle. To do this add this in the first cell :
 ```
 \begin{titlepage}

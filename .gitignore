@@ -16,3 +16,5 @@ optimizationmethods_files/
 # Amazon publish - ignore everything except readme.md
 amazon_publish_6_9/*
 !amazon_publish_6_9/readme.md
+!amazon_publish_6_9/optimizationmethods_amazon_6_9.tex
+!amazon_publish_6_9/optimizationmethods_amazon_6_9.pdf

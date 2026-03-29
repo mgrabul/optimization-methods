@@ -74,16 +74,34 @@ Replace `\maketitle` with this:
     {\Huge\bfseries Python for Fundamental Optimization Methods\par}
     \vspace{1cm}
 
-    {\Large An Introduction to Algorithms, Linear Algebra, and Numerical Optimization\par}
+    {\Large An Introduction to Algorithms, Linear Algebra, Numerical Optimization, and Linear Programming\par}
     \vspace{2cm}
 
     {\Large Marko Grabuloski\par}
     \vfill
+
+    \thispagestyle{empty}   
 \end{titlepage}
+
 ```
+
+## remove page numeration from the copy write page
+
+
+just before © 2024 - 2026 Marko Grabuloski
+
+add 
+
+```
+\thispagestyle{empty}
+```   
 
 ## generate pdf
 
 ```bash
+# clean
+latexmk -xelatex -CA optimizationmethods_amazon_6_9.tex
+# generate pdf
 latexmk -xelatex optimizationmethods_amazon_6_9.tex
+
 ```
